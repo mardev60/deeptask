@@ -6,7 +6,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('execute-tasks')
-  async executeTasks(@Body() tasks: any[]) {
+  async executeTasks(@Body() tasks: any) {
+    console.log('executeTasks', tasks);
     return await this.appService.executeTasks(tasks);
   }
 }

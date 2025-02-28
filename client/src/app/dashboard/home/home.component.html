@@ -1,0 +1,30 @@
+<div
+  class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-900 to-gray-900 text-white p-8"
+>
+  <h1 class="text-5xl font-extrabold mb-6 text-center">
+    Bienvenue sur DeepTask
+  </h1>
+  <p class="text-lg text-gray-300 mb-8 text-center max-w-lg">
+    Décrivez ce que vous souhaitez automatiser et laissez l'IA créer un workflow
+    sur-mesure pour vous.
+  </p>
+  <div class="relative w-full max-w-xl">
+    <input
+      type="text"
+      [(ngModel)]="userRequest"
+      placeholder="Décrivez votre agent..."
+      class="p-4 rounded-lg w-full bg-gray-800 text-white placeholder-gray-400 border border-gray-600 focus:border-blue-400 focus:ring-2 focus:ring-blue-400"
+    />
+    <button
+      (click)="generateWorkflow()"
+      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-lg"
+    >
+      ➤
+    </button>
+  </div>
+  <app-workflow-editor
+    *ngIf="generatedWorkflow.length > 0"
+    [workflow]="generatedWorkflow"
+    (workflowUpdated)="updateGeneratedWorkflow($event)"
+  ></app-workflow-editor>
+</div>
